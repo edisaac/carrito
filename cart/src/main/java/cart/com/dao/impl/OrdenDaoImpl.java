@@ -1,22 +1,48 @@
 package cart.com.dao.impl;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import cart.com.dao.IOrdenDao;
 import cart.com.entity.Orden;
 import cart.com.entity.Producto;
 
-@Repository("ordenDao")
-public class OrdenDaoImpl extends Dao implements IOrdenDao {
-	
+@Repository
+@Transactional
+public class OrdenDaoImpl  implements IOrdenDao {
+
+ 
+	 
+		 
+		private SessionFactory sessionFactory;
+		
+		public void setSessionFactory(SessionFactory sf){
+	        this.sessionFactory = sf;
+	    }
+	    
+	    public Session getSession() throws HibernateException {
+	    	Session session;
+			try {
+			    session = sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+			    session = sessionFactory.openSession();
+			}
+			
+			return session;
+	    }
+			
 	public void guardar(Orden pojo) {
 		// TODO Auto-generated method stub
 		//Transaction tx = null;
 		//tx= getSession().beginTransaction();
 		getSession().save(pojo);
-		getSession().flush();
-		getSession().close();
+		//getSession().flush();
+		//getSession().close();
 		//tx.commit();
 	}
 	

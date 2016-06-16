@@ -3,20 +3,42 @@ package cart.com.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import cart.com.dao.IEstablecimientoDao;
 import cart.com.entity.Establecimiento;
  
-@Repository("establecimientoDao")
+@Repository 
+@Transactional
+public class EstablecimientoDaoImpl implements IEstablecimientoDao   {
 
-public class EstablecimientoDaoImpl extends Dao implements IEstablecimientoDao {
-
-	
+		 
+		private SessionFactory sessionFactory;
+		
+		public void setSessionFactory(SessionFactory sf){
+	        this.sessionFactory = sf;
+	    }
+	    
+	    public Session getSession() throws HibernateException {
+	    	Session session;
+			try {
+			    session = sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+			    session = sessionFactory.openSession();
+			}
+			
+			return session;
+	    }
+			
 	public void guardar(Establecimiento pojo) {
 		// TODO Auto-generated method stub
 		getSession().save(pojo);
+		getSession().persist(pojo);
 	}
 
 	

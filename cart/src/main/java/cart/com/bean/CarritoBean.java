@@ -140,7 +140,7 @@ public class CarritoBean implements Serializable {
     	}
     	this.orden.setDetalleOrdens(detalleOrdens);*/
     	boolean grabo;
-    	this.orden.setIdOrden(1);
+    	//this.orden.setIdOrden(1);
     	grabo=ordenService.guardar(this.orden);  
     	 
     	if (grabo==false){

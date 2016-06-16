@@ -9,22 +9,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-<context:annotation-config />
-<context:component-scan base-package="cart.com"></context:component-scan>
-<bean name="dataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"  >
+
+
+<bean name="dataSourcex"  class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"  >
 		<property name="driverClass" value="org.postgresql.Driver"></property>
 		<property name="jdbcUrl" value="jdbc:postgresql://192.168.0.223:5432/carritodb"> </property>
 		<property name="user" value="carrito"></property>
 		<property name="password" value="carritopass"></property>
-		<property name="minPoolSize" value="50"></property>
-		<property name="maxPoolSize" value="100"></property>
+		<property name="minPoolSize" value="5"></property>
+		<property name="maxPoolSize" value="10"></property>
 		<property name="checkoutTimeout" value="2000"></property>
 		<property name="acquireIncrement" value="10"></property>
 		<property name="maxConnectionAge" value="5"></property>		
 		<property name="autoCommitOnClose" value="true"></property>		
 </bean>
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"   >
-		<property name="dataSource" ref="dataSource"></property>
+	<bean name="sessionFactoryHib" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"   >
+		<property name="dataSource" ref="dataSourcex"></property>
 		<property name="mappingLocations">
 		<list>
 			<value >classpath:cart/com/entity/*.hbm.xml</value>
@@ -36,14 +36,26 @@
 			<prop key="hibernate.showSql">true</prop>			 
 			<prop key="hibernate.format_sql">true</prop>			
 		</props>
-		</property>
-		
+		</property>		
 	</bean>
-	<tx:annotation-driven transaction-manager="txManager"/>
+<bean id="establecimientoDao" class="cart.com.dao.impl.EstablecimientoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryHib" />
+</bean>
+<bean id="productoDao" class="cart.com.dao.impl.ProductoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryHib" />
+</bean>
+<bean id="ordenDao" class="cart.com.dao.impl.OrdenDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryHib" />
+</bean>  
+
+    
+<context:component-scan base-package="cart.com"/>	
+	
     <bean name="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="sessionFactory" ref="sessionFactoryHib"></property>
 	</bean>
 	
-	 
+	<context:annotation-config />
+	<tx:annotation-driven transaction-manager="txManager"/> 
 	
 </beans>

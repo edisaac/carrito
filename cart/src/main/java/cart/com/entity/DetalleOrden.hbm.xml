@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="cart.com.entity.DetalleOrden" table="detalle_orden" schema="public" optimistic-lock="version">
-        <id name="idDetalle" type="int">
-            <column name="id_detalle" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="orden" class="cart.com.entity.Orden" fetch="select">
-            <column name="id_orden" />
-        </many-to-one>
-        <many-to-one name="producto" class="cart.com.entity.Producto" fetch="select">
-            <column name="id_producto" />
-        </many-to-one>
-        <property name="descripcion" type="string">
-            <column name="descripcion" length="50" />
-        </property>
-        <property name="cantidad" type="java.lang.Integer">
-            <column name="cantidad" />
-        </property>
-        <property name="precio" type="big_decimal">
-            <column name="precio" precision="15" />
-        </property>
-    </class>
+ <class name="cart.com.entity.DetalleOrden" schema="public" table="detalle_orden">
+  <id name="idDetalle" type="int">
+   <column name="id_detalle"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="cart.com.entity.Orden" fetch="select" name="orden">
+   <column name="id_orden"/>
+  </many-to-one>
+  <many-to-one class="cart.com.entity.Producto" fetch="select" name="producto">
+   <column name="id_producto"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="descripcion" type="string">
+   <column length="50" name="descripcion"/>
+  </property>
+  <property generated="never" lazy="false" name="cantidad" type="java.lang.Integer">
+   <column name="cantidad"/>
+  </property>
+  <property generated="never" lazy="false" name="precio" type="big_decimal">
+   <column name="precio" precision="15"/>
+  </property>
+ </class>
 </hibernate-mapping>

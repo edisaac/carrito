@@ -129,18 +129,19 @@ public class CarritoBean implements Serializable {
 	}
     
     public String grabarOrden(){   	
-    	/*Set<DetalleOrden> detalleOrdens = new HashSet<DetalleOrden>(0);
+    	orden.getDetalleOrdens().clear();
+    	
     	for (Item item:carrito){
     		 DetalleOrden d = new DetalleOrden();
     		 d.setOrden(this.orden);
     		 d.setCantidad(item.getCantidad());
     		 d.setDescripcion(item.getProducto().getDescripcion());
     		 d.setProducto(item.getProducto());
-    		 detalleOrdens.add(d);
+    		 d.setPrecio(item.getProducto().getPrecio());
+    		 orden.getDetalleOrdens().add(d);
     	}
-    	this.orden.setDetalleOrdens(detalleOrdens);*/
+  
     	boolean grabo;
-    	//this.orden.setIdOrden(1);
     	grabo=ordenService.guardar(this.orden);  
     	 
     	if (grabo==false){

@@ -1,27 +1,29 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="cart.com.entity.Orden" table="orden" schema="public" optimistic-lock="version">
-        <id name="idOrden" type="int">
-            <column name="id_orden" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="establecimiento" class="cart.com.entity.Establecimiento" fetch="select">
-            <column name="id_establecimiento" />
-        </many-to-one>
-        <property name="celular" type="string">
-            <column name="celular" length="50" />
-        </property>
-        <property name="monto" type="big_decimal">
-            <column name="monto" precision="15" />
-        </property>
-        <set name="detalleOrdens" table="detalle_orden" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="id_orden" />
-            </key>
-            <one-to-many class="cart.com.entity.DetalleOrden" />
-        </set>
-    </class>
+ <class name="cart.com.entity.Orden" schema="public" table="orden">
+  <id name="idOrden" type="int">
+   <column name="id_orden"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="cart.com.entity.Establecimiento" fetch="select" name="establecimiento">
+   <column name="id_establecimiento"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="celular" type="string">
+   <column length="50" name="celular"/>
+  </property>
+  <property generated="never" lazy="false" name="monto" type="big_decimal">
+   <column name="monto" precision="15"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="detalleOrdens"
+   sort="unsorted" table="detalle_orden"  cascade="save-update">
+   <key>
+    <column name="id_orden"/>
+   </key>
+   <one-to-many class="cart.com.entity.DetalleOrden"/>
+  </set>
+  
+ </class>
 </hibernate-mapping>

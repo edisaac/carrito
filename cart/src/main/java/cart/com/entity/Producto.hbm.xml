@@ -1,30 +1,31 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="cart.com.entity.Producto" table="producto" schema="public" optimistic-lock="version">
-        <id name="idProducto" type="int">
-            <column name="id_producto" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="establecimiento" class="cart.com.entity.Establecimiento" fetch="select">
-            <column name="id_establecimiento" />
-        </many-to-one>
-        <property name="descripcion" type="string">
-            <column name="descripcion" length="250" />
-        </property>
-        <property name="precio" type="big_decimal">
-            <column name="precio" precision="15" />
-        </property>
-        <property name="nombre" type="string">
-            <column name="nombre" length="50" />
-        </property>
-        <set name="detalleOrdens" table="detalle_orden" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="id_producto" />
-            </key>
-            <one-to-many class="cart.com.entity.DetalleOrden" />
-        </set>
-    </class>
+ <class name="cart.com.entity.Producto" schema="public" table="producto">
+  <id name="idProducto" type="int">
+   <column name="id_producto"/>
+   <generator class="identity"/>
+  </id>
+  <many-to-one class="cart.com.entity.Establecimiento" fetch="select" name="establecimiento">
+   <column name="id_establecimiento"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="descripcion" type="string">
+   <column length="250" name="descripcion"/>
+  </property>
+  <property generated="never" lazy="false" name="precio" type="big_decimal">
+   <column name="precio" precision="15"/>
+  </property>
+  <property generated="never" lazy="false" name="nombre" type="string">
+   <column length="50" name="nombre"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="detalleOrdens"
+   sort="unsorted" table="detalle_orden">
+   <key>
+    <column name="id_producto"/>
+   </key>
+   <one-to-many class="cart.com.entity.DetalleOrden"/>
+  </set>
+ </class>
 </hibernate-mapping>

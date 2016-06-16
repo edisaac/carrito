@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,10 +62,11 @@ public class EstablecimientoDaoImpl implements IEstablecimientoDao   {
 		return getSession().createCriteria(Establecimiento.class);
 	}
 	
-	
+	 
+	@SuppressWarnings("unchecked")
 	public List<Establecimiento> getEstablecimientos() {
 		// TODO Auto-generated method stub
-		return  crearCriteria().list();
+		return    crearCriteria().list();
 	}
 
 }

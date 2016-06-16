@@ -3,8 +3,6 @@ package cart.com.dao.impl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,13 +35,9 @@ public class OrdenDaoImpl  implements IOrdenDao {
 	    }
 			
 	public void guardar(Orden pojo) {
-		// TODO Auto-generated method stub
-		//Transaction tx = null;
-		//tx= getSession().beginTransaction();
+	 
 		getSession().save(pojo);
-		//getSession().flush();
-		//getSession().close();
-		//tx.commit();
+ 
 	}
 	
 	public void actualizar(Orden pojo) {

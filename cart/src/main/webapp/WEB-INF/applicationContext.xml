@@ -11,7 +11,7 @@
 
 <context:annotation-config />
 <context:component-scan base-package="cart.com"></context:component-scan>
-<bean name="dataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" scope="singleton">
+<bean name="dataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"  >
 		<property name="driverClass" value="org.postgresql.Driver"></property>
 		<property name="jdbcUrl" value="jdbc:postgresql://192.168.0.223:5432/carritodb"> </property>
 		<property name="user" value="carrito"></property>
@@ -23,7 +23,7 @@
 		<property name="maxConnectionAge" value="5"></property>		
 		<property name="autoCommitOnClose" value="true"></property>		
 </bean>
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"   >
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mappingLocations">
 		<list>
@@ -37,7 +37,9 @@
 			<prop key="hibernate.format_sql">true</prop>			
 		</props>
 		</property>
+		
 	</bean>
+	<tx:annotation-driven transaction-manager="txManager"/>
     <bean name="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>

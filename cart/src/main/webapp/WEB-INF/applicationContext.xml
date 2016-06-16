@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+<context:annotation-config />
+<context:component-scan base-package="cart.com"></context:component-scan>
+<bean name="dataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" scope="singleton">
+		<property name="driverClass" value="org.postgresql.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:postgresql://192.168.0.223:5432/carritodb"> </property>
+		<property name="user" value="carrito"></property>
+		<property name="password" value="carritopass"></property>
+		<property name="minPoolSize" value="50"></property>
+		<property name="maxPoolSize" value="100"></property>
+		<property name="checkoutTimeout" value="2000"></property>
+		<property name="acquireIncrement" value="10"></property>
+		<property name="maxConnectionAge" value="5"></property>		
+		<property name="autoCommitOnClose" value="true"></property>		
+</bean>
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mappingLocations">
+		<list>
+			<value >classpath:cart/com/entity/*.hbm.xml</value>
+		</list>
+		</property>
+		<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+			<prop key="hibernate.showSql">true</prop>			 
+			<prop key="hibernate.format_sql">true</prop>			
+		</props>
+		</property>
+	</bean>
+    <bean name="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	 
+	
+</beans>

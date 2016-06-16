@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ <ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/template.xhtml" 
+      xmlns:p="http://primefaces.org/ui">
+ <ui:define name="content">
+ 
+	 <h:form id="formx">
+    
+   <p:panelGrid >
+    <ui:repeat   id="dtCarrito" value="#{carritoBean.carrito }"   var="item" stickyHeader="true" >
+		 <p:row>
+			<p:column headerText="cantidad" colspan="1">
+				<p:outputLabel   value="#{item.cantidad }" />
+		    </p:column>
+		       <p:column colspan="2" headerText="Nombre"  styleClass="ui-widget-header">
+		            <h:outputText value="#{item.producto.nombre}" />
+		       </p:column>
+		    <p:column colspan="1" headerText="Total S/.">
+				<p:outputLabel value="#{item.cantidad * item.producto.precio }" />
+			</p:column>
+		      
+	 
+		        <p:column  >
+					<p:commandButton update=":formcab:total"      icon="ui-icon-trash" title="eliminar de carrito" >
+		               
+		    		</p:commandButton>
+			</p:column>		
+	 </p:row>
+	 </ui:repeat></p:panelGrid>
+ 
+ 
+ </h:form>
+</ui:define>
+</ui:composition>

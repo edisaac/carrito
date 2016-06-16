@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ <ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/template.xhtml" 
+      xmlns:p="http://primefaces.org/ui">
+ <ui:define name="content">
+ 
+	 <h:form id="formx">  
+	 
+	 <p:panelGrid >
+	  <p:outputLabel value="#{carritoBean.establecimiento.nombre}" />
+	<ui:repeat value="#{carritoBean.productos}" var="producto">
+		<p:row>
+		       <p:column colspan="3" styleClass="ui-widget-header">
+		            <p:outputLabel value="#{producto.nombre}" />
+		       </p:column>
+		</p:row>
+		<p:row>
+		       <p:column rowspan="2" >
+		            <p:outputLabel value="#{producto.descripcion}" />
+		       </p:column>
+		        <p:column rowspan="1"  >
+		            <p:outputLabel value="S/.#{producto.precio}" />
+		       </p:column>
+		    </p:row>
+		 <p:row>
+			  <p:column rowspan="1"  >
+			  	<p:commandButton update=":formcab:total"   icon="ui-icon-plus" title="agregar a carrito" >
+		               <f:setPropertyActionListener value="#{producto}" target="#{carritoBean.selectedProducto}" />
+		        </p:commandButton>
+			  </p:column>	      
+				       
+		</p:row>  
+	 </ui:repeat>
+	 </p:panelGrid>  
+	 
+ </h:form>
+</ui:define>
+</ui:composition>

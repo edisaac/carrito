@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+	<ui:composition   xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"	
+	                  xmlns:p="http://primefaces.org/ui">
+
+		<h:form id="formcab">  
+		<p:panelGrid id="cabecera" columns="2"  style="width='100%'">
+		    <f:facet name="header">
+		        <p:graphicImage url="/imagenes/#{carritoBean.establecimiento.idEstablecimiento}_logo.png"  />
+		    </f:facet>
+		     
+		     <p:menubar>
+   			 
+			 <p:menuitem value="Carta"  icon="ui-icon-search" url="/view/productos.xhtml" />
+			 <p:menuitem value="Pedido"  icon="ui-icon-cart" url="/view/carrito.xhtml" />
+			 <p:menuitem value="Guardar"  icon="ui-icon-disk" url="/orden/nuevo.do" />
+			 </p:menubar>  
+			 <p:outputLabel id="total" value="Total : S/. #{carritoBean.total} " />
+			 
+		 </p:panelGrid>
+		 	<p:sticky target="cabecera" />
+		</h:form>     
+	 
+	 
+	</ui:composition>
+	

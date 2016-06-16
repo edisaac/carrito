@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="cart.com.entity.DetalleOrden" table="detalle_orden" schema="public" optimistic-lock="version">
+        <id name="idDetalle" type="int">
+            <column name="id_detalle" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="orden" class="cart.com.entity.Orden" fetch="select">
+            <column name="id_orden" />
+        </many-to-one>
+        <many-to-one name="producto" class="cart.com.entity.Producto" fetch="select">
+            <column name="id_producto" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="precio" precision="15" />
+        </property>
+    </class>
+</hibernate-mapping>

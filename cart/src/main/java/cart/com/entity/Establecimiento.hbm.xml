@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="cart.com.entity.Establecimiento" table="establecimiento" schema="public" optimistic-lock="version">
+        <id name="idEstablecimiento" type="int">
+            <column name="id_establecimiento" />
+            <generator class="assigned" />
+        </id>
+        <property name="ruc" type="string">
+            <column name="ruc" length="11" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="50" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="11" />
+        </property>
+        <set name="ordens" table="orden" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_establecimiento" />
+            </key>
+            <one-to-many class="cart.com.entity.Orden" />
+        </set>
+        <set name="productos" table="producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_establecimiento" />
+            </key>
+            <one-to-many class="cart.com.entity.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>

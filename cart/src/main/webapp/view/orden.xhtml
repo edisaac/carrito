@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ <ui:composition
+ xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/template.xhtml" 
+      xmlns:p="http://primefaces.org/ui">
+ <ui:define name="content"> 
+ <hr></hr>
+	 <h:form id="formx">
+	    <p:panelGrid columns="2"  >
+ 		 		 <p:outputLabel for="monto" value="monto"/>
+				 <p:inputText id="monto" readonly="true" label="Monto final: S/."  value="#{carritoBean.orden.monto}" />
+	 	
+	 			 <p:outputLabel for="celular" value="celular"/>
+				 <p:inputMask id="celular" mask="999-999-999" required="true"  label="Ingrese Celular" value="#{carritoBean.orden.celular}" />
+		  		 <p:commandButton value="Grabar"  action="#{carritoBean.grabarOrden}" icon="ui-icon-check" />
+    
+	 </p:panelGrid>
+	 </h:form>
+</ui:define>
+</ui:composition>
+

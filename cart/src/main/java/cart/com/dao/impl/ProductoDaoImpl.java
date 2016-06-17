@@ -17,27 +17,8 @@ import cart.com.entity.Producto;
 
 @Repository 
 @Transactional
-public class ProductoDaoImpl   implements IProductoDao {
-	
- 
-		 
-		private SessionFactory sessionFactory;
-		
-		public void setSessionFactory(SessionFactory sf){
-	        this.sessionFactory = sf;
-	    }
-	    
-	    public Session getSession() throws HibernateException {
-	    	Session session;
-			try {
-			    session = sessionFactory.getCurrentSession();
-			} catch (HibernateException e) {
-			    session = sessionFactory.openSession();
-			}
-			
-			return session;
-	    }
-				
+public class ProductoDaoImpl extends Dao   implements IProductoDao {
+					
 	public void guardar(Producto pojo) {
 		// TODO Auto-generated method stub
 		getSession().save(pojo);

@@ -14,30 +14,12 @@ import cart.com.entity.Establecimiento;
  
 @Repository 
 @Transactional
-public class EstablecimientoDaoImpl implements IEstablecimientoDao   {
-
-		 
-		private SessionFactory sessionFactory;
-		
-		public void setSessionFactory(SessionFactory sf){
-	        this.sessionFactory = sf;
-	    }
-	    
-	    public Session getSession() throws HibernateException {
-	    	Session session;
-			try {
-			    session = sessionFactory.getCurrentSession();
-			} catch (HibernateException e) {
-			    session = sessionFactory.openSession();
-			}
-			
-			return session;
-	    }
-			
+public class EstablecimientoDaoImpl extends Dao implements IEstablecimientoDao   {
+ 			
 	public void guardar(Establecimiento pojo) {
 		// TODO Auto-generated method stub
 		getSession().save(pojo);
-		getSession().persist(pojo);
+	
 	}
 
 	

@@ -12,28 +12,12 @@ import cart.com.entity.Producto;
 
 @Repository
 @Transactional
-public class OrdenDaoImpl  implements IOrdenDao {
+public class OrdenDaoImpl extends Dao  implements IOrdenDao {
 
  
 	 
 		 
-		private SessionFactory sessionFactory;
-		
-		public void setSessionFactory(SessionFactory sf){
-	        this.sessionFactory = sf;
-	    }
-	    
-	    public Session getSession() throws HibernateException {
-	    	Session session;
-			try {
-			    session = sessionFactory.getCurrentSession();
-			} catch (HibernateException e) {
-			    session = sessionFactory.openSession();
-			}
-			
-			return session;
-	    }
-			
+	
 	public void guardar(Orden pojo) {
 	 
 		getSession().save(pojo);
@@ -51,7 +35,7 @@ public class OrdenDaoImpl  implements IOrdenDao {
 	}
 	 
 	public Orden getOrden(int idOrden) {
-		return (Orden)getSession().get(Producto.class, idOrden);
+		return (Orden)getSession().get(Orden.class, idOrden);
 		 
 	}
 

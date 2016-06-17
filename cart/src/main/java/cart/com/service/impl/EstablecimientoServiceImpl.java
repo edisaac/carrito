@@ -11,7 +11,6 @@ import cart.com.entity.Establecimiento;
 import cart.com.service.IEstablecimientoService;
 
 @Service("establecimientoService")
-
 public class EstablecimientoServiceImpl implements IEstablecimientoService {
 
 	@Autowired

@@ -4,6 +4,11 @@
   <artifactId>cart</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+   <properties>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+    <hibernate.version>4.3.11.Final</hibernate.version>
+    <spring.version>4.3.0.RELEASE</spring.version>
+  </properties>
     <build>
     <plugins>
         <plugin>
@@ -19,73 +24,64 @@
   
   <dependencies>
    	<dependency>
-	<groupId>org.hibernate</groupId>
-	<artifactId>hibernate-core</artifactId>
-	<version>4.3.11.Final</version>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
 	</dependency>
 	<dependency>
-	<groupId>org.hibernate</groupId>
-	<artifactId>hibernate-entitymanager</artifactId>
-	<version>4.3.11.Final</version>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${hibernate.version}</version>
 	</dependency>
 	
 	<dependency>
-	<groupId>org.postgresql</groupId>
-	<artifactId>postgresql</artifactId>
-	<version>9.4.1208</version>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>9.4.1208</version>
 	</dependency>
   
   
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-beans</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-web</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>	
 	
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-tx</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>
-	
-	
-	
-	
+	<!-- Spring para los llamados a hibernate -->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-orm</artifactId>
-		<version>4.2.6.RELEASE</version>
+		<version>${spring.version}</version>
 	</dependency>
-  
+    <!-- Spring para los llamados web -->
   	 <dependency>
 	  <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
-	    <version>4.2.6.RELEASE</version>
+	    <version>${spring.version}</version>
 	</dependency>
-  	<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-framework-bom</artifactId>
-            <version>4.2.6.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+	 
 	
-  
+    <!-- Pool de conexiones   -->
 	<dependency>
 		<groupId>c3p0</groupId>
 		<artifactId>c3p0</artifactId>

@@ -40,15 +40,10 @@ public class EstablecimientoDaoImpl extends Dao implements IEstablecimientoDao  
 		return (Establecimiento)getSession().get(Establecimiento.class, idEstablecimiento);
 	}
 
-	public Criteria crearCriteria(){
-		return getSession().createCriteria(Establecimiento.class);
-	}
-	
-	 
 	@SuppressWarnings("unchecked")
 	public List<Establecimiento> getEstablecimientos() {
 		// TODO Auto-generated method stub
-		return    crearCriteria().list();
+		return    crearCriteria(Establecimiento.class).list();
 	}
 
 }

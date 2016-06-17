@@ -43,18 +43,18 @@ public class ProductoDaoImpl extends Dao   implements IProductoDao {
 		return (Producto)getSession().get(Producto.class, idProducto);
 	}
 
-	public Criteria crearCriteria(){
-		return getSession().createCriteria(Producto.class);
-	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Producto> getProductos() {
 		// TODO Auto-generated method stub
-		return  crearCriteria().list();
+		return  crearCriteria(Producto.class).list();
 	}
 	@SuppressWarnings("unchecked")
 	public List<Producto> getProductosByEstablecimiento(int idEstablecimiento) {
 		// TODO Auto-generated method stub
-		return  crearCriteria().add(Restrictions.sqlRestriction("id_establecimiento=?", idEstablecimiento,new IntegerType() )).list();
+		return  crearCriteria(Producto.class).add(
+				Restrictions.sqlRestriction("id_establecimiento=?",idEstablecimiento,new IntegerType() )
+				).list();
 	}
 	 
 }

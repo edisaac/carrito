@@ -1,8 +1,11 @@
 package cart.com.dao.impl;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import cart.com.entity.Producto;
 
 public class Dao {
 	private SessionFactory sessionFactory;
@@ -21,4 +24,7 @@ public class Dao {
 		
 		return session;
     }
+    protected Criteria crearCriteria(Class arg0){
+		return getSession().createCriteria( arg0);
+	}
 }

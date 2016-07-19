@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2016 22:56:46 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="cart.com.entity.UserRole" table="user_role" schema="public" optimistic-lock="version">
+        <composite-id name="id" class="cart.com.entity.UserRoleId">
+            <key-property name="userId" type="string">
+                <column name="user_id" />
+            </key-property>
+            <key-property name="roleId" type="int">
+                <column name="role_id" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

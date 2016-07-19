@@ -1,5 +1,5 @@
 package cart.com.entity;
-// Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final
+// Generated 18-jul-2016 22:56:46 by Hibernate Tools 4.3.1.Final
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class Orden implements java.io.Serializable {
 	private Establecimiento establecimiento;
 	private String celular;
 	private BigDecimal monto;
-	private Set<DetalleOrden> detalleOrdens = new HashSet<DetalleOrden>(0);
+	private Set detalleOrdens = new HashSet(0);
 
 	public Orden() {
 	}
@@ -23,8 +23,7 @@ public class Orden implements java.io.Serializable {
 		this.idOrden = idOrden;
 	}
 
-	public Orden(int idOrden, Establecimiento establecimiento, String celular, BigDecimal monto,
-			Set<DetalleOrden> detalleOrdens) {
+	public Orden(int idOrden, Establecimiento establecimiento, String celular, BigDecimal monto, Set detalleOrdens) {
 		this.idOrden = idOrden;
 		this.establecimiento = establecimiento;
 		this.celular = celular;
@@ -64,11 +63,11 @@ public class Orden implements java.io.Serializable {
 		this.monto = monto;
 	}
 
-	public Set<DetalleOrden> getDetalleOrdens() {
+	public Set getDetalleOrdens() {
 		return this.detalleOrdens;
 	}
 
-	public void setDetalleOrdens(Set<DetalleOrden> detalleOrdens) {
+	public void setDetalleOrdens(Set detalleOrdens) {
 		this.detalleOrdens = detalleOrdens;
 	}
 

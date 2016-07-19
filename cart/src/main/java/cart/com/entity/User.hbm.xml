@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-jul-2016 22:56:46 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="cart.com.entity.User" table="user" schema="public" optimistic-lock="version">
+        <id name="userId" type="string">
+            <column name="USER_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="active" type="java.lang.Integer">
+            <column name="ACTIVE" />
+        </property>
+        <property name="emailId" type="string">
+            <column name="EMAIL_ID" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" />
+        </property>
+        <property name="provider" type="string">
+            <column name="PROVIDER" />
+        </property>
+    </class>
+</hibernate-mapping>

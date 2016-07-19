@@ -1,5 +1,5 @@
 package cart.com.entity;
-// Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final
+// Generated 18-jul-2016 22:56:46 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +15,8 @@ public class Establecimiento implements java.io.Serializable {
 	private String email;
 	private String contrasena;
 	private String telefono;
-	private Set<Orden> ordens = new HashSet<Orden>(0);
-	private Set<Producto> productos = new HashSet<Producto>(0);
+	private Set ordens = new HashSet(0);
+	private Set productos = new HashSet(0);
 
 	public Establecimiento() {
 	}
@@ -26,7 +26,7 @@ public class Establecimiento implements java.io.Serializable {
 	}
 
 	public Establecimiento(int idEstablecimiento, String ruc, String nombre, String email, String contrasena,
-			String telefono, Set<Orden> ordens, Set<Producto> productos) {
+			String telefono, Set ordens, Set productos) {
 		this.idEstablecimiento = idEstablecimiento;
 		this.ruc = ruc;
 		this.nombre = nombre;
@@ -85,19 +85,19 @@ public class Establecimiento implements java.io.Serializable {
 		this.telefono = telefono;
 	}
 
-	public Set<Orden> getOrdens() {
+	public Set getOrdens() {
 		return this.ordens;
 	}
 
-	public void setOrdens(Set<Orden> ordens) {
+	public void setOrdens(Set ordens) {
 		this.ordens = ordens;
 	}
 
-	public Set<Producto> getProductos() {
+	public Set getProductos() {
 		return this.productos;
 	}
 
-	public void setProductos(Set<Producto> productos) {
+	public void setProductos(Set productos) {
 		this.productos = productos;
 	}
 

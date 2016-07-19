@@ -112,6 +112,15 @@
 	<artifactId>jsf-api</artifactId>
 	<version>2.2.13</version>
 	</dependency>
-	
+			<dependency>
+		  <groupId>org.springframework.social</groupId>
+		  <artifactId>spring-social-facebook</artifactId>
+		  <version>2.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.2</version>
+</dependency>
   </dependencies>  
 </project>

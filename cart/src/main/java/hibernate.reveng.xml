@@ -2,11 +2,12 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<type-mapping>
-		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
-	</type-mapping>
-	<table-filter match-schema="public" match-name="establecimiento" />
-	<table-filter match-schema="public" match-name="producto" />
-	<table-filter match-name="orden" match-schema="public"></table-filter>
-	<table-filter match-name="detalle_orden" match-schema="public"></table-filter>
+  <table-filter match-schema="public" match-name="detalle_orden"/>
+  <table-filter match-schema="public" match-name="employee"/>
+  <table-filter match-schema="public" match-name="establecimiento"/>
+  <table-filter match-schema="public" match-name="orden"/>
+  <table-filter match-schema="public" match-name="producto"/>
+  <table-filter match-schema="public" match-name="role"/>
+  <table-filter match-schema="public" match-name="user"/>
+  <table-filter match-schema="public" match-name="user_role"/>
 </hibernate-reverse-engineering>

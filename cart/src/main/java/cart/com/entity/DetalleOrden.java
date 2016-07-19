@@ -1,5 +1,5 @@
 package cart.com.entity;
-// Generated 15-may-2016 19:15:35 by Hibernate Tools 4.3.1.Final
+// Generated 18-jul-2016 22:56:46 by Hibernate Tools 4.3.1.Final
 
 import java.math.BigDecimal;
 

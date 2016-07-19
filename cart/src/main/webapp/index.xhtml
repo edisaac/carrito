@@ -1,11 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html  xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      > 
 
-<h:head></h:head> 
-<body> 
+
+<h:head>
+ <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'></link>
+<style>
+.span {
+
+	width: 100%;
+	cursor: pointer;
+	background: #3B5998;
+ 	height: 52px;
+ 	color:white;
+}
+ 
+.face-icon {
+    background-image: url("#{facesContext.externalContext.request.contextPath}/imagenes/facebook.png") !important;
+    width: 32px; 
+    height: 32px; 
+    float: left;
+    }
+</style>
+</h:head> 
+<h:body>  
+
 	<a tabindex="-1" class="ui-menuitem-link ui-corner-all" href="/cart/do/1.do">
 	 establecimiento 1
 	</a> 
@@ -13,5 +36,12 @@
 	<a tabindex="-1" class="ui-menuitem-link ui-corner-all" href="/cart/do/2.do">
 	 establecimiento 2
 	</a>	
-</body> 
+	
+	 <h:form id="formx" > 
+	 
+    <p:commandButton class="span"  value="Ingresar con Facebook " icon="face-icon"/>
+    
+	 </h:form>
+	 	
+</h:body>
 </html>
